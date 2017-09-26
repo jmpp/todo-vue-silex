@@ -4,7 +4,6 @@ namespace TodoApp\Infrastructure;
 
 use PDO;
 
-
 class Database
 {
 	private $pdo;
@@ -15,8 +14,10 @@ class Database
 		(
 			'mysql:host=localhost;dbname=todoApp',
 			'root',
-			'r00t'
+			'troiswa'
 		);
+
+		$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		$this->pdo->exec('SET NAMES UTF8');
 	}
