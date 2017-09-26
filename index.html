@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Google Fonts -->
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons|Roboto" rel="stylesheet">
+    <!-- Inclusion du Framework CSS : Materialize.css -->
+    <link rel="stylesheet" href="//unpkg.com/materialize-css@0.100.2/dist/css/materialize.min.css">
+    
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+        .link-delete {
+            color: crimson;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .link-delete:hover {
+            color: darkred;
+        }
+    </style>
+    
+    <title>TodoApp</title>
+</head>
+<body>
+
+<main id="app" class="container" v-cloak>
+    
+    <h3>Ajouter une tâche</h3>
+
+    <fieldset>
+        <form v-on:click.prevent="addTask" class="row">
+            <div class="input-field col m6 offset-m3">
+                <input id="taskTitle" type="text" v-model="newTaskTitle">
+                <label for="taskTitle">Intitulé de la tâche</label>
+            </div>
+            <div class="col m4 offset-m5">
+                <button type="submit" class="waves-effect waves-light btn" v-bind:disabled="newTaskTitle.trim() === ''">Ajouter</button>
+            </div>
+        </form>
+    </fieldset>
+
+    <h3>Liste des tâches</h3>
+
+    <p v-if="remaining > 0">Il reste <strong>{{ remaining | pluralize('tâche') }}</strong> sur <strong>{{ tasks.length }}</strong> à effectuer.</p>
+    <p v-else>Félicitations ! Toutes les tâches ont été effectuées !</p>
+    
+    <ul class="collection">
+        <li class="collection-item" v-for="(task, index) in tasks">
+            <input type="checkbox" v-model="task.isDone" v-bind:id="'t_' + index">
+            <label v-bind:for="'t_' + index">{{task.title}}</label>
+            <a href="#" class="link-delete" title="Supprimer cette tâche" v-on:click.prevent="removeTask(task)">
+                <i class="small material-icons">delete_forever</i>
+            </a>
+        </li>
+    </ul>
+
+</main>
+
+<script src="//unpkg.com/jquery@3.2.1/dist/jquery.js"></script>
+<script src="//unpkg.com/materialize-css@0.100.2/dist/js/materialize.min.js"></script>
+<script src="//unpkg.com/vue@2.4.4/dist/vue.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
