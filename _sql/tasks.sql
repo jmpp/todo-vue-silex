@@ -28,16 +28,16 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `tasks`;
 CREATE TABLE `tasks` (
-  `Id` int(11) NOT NULL,
-  `Title` varchar(180) NOT NULL,
-  `IsDone` tinyint(1) NOT NULL
+  `id` int(11) NOT NULL,
+  `title` varchar(180) NOT NULL,
+  `isDone` tinyint(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tasks`
 --
 
-INSERT INTO `tasks` (`Id`, `Title`, `IsDone`) VALUES
+INSERT INTO `tasks` (`id`, `title`, `isDone`) VALUES
 (1, 'Apprendre HTML et CSS', 1),
 (2, 'Apprendre JS et PHP', 1),
 (3, 'Apprendre Vue.js', 1),
@@ -51,8 +51,8 @@ INSERT INTO `tasks` (`Id`, `Title`, `IsDone`) VALUES
 -- Indexes for table `tasks`
 --
 ALTER TABLE `tasks`
-  ADD PRIMARY KEY (`Id`),
-  ADD KEY `title` (`Title`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `title` (`title`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -62,7 +62,7 @@ ALTER TABLE `tasks`
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
