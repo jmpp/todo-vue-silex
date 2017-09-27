@@ -28,6 +28,9 @@ new Vue({
             
             this.tasks.push( newTask );
 
+            // Ajout en base
+            jQuery.post('api/web/task', newTask);
+
             /*
                 Réinitalise la valeur de la variable "newTaskName", utilisée
                 en tant que modèle sur le <input type="text">
@@ -41,10 +44,19 @@ new Vue({
 
             if (index > -1) {
                 this.tasks.splice(index, 1);
+
+                // Suppression en base
+                jQuery.ajax({
+                    method : 'DELETE',
+                    url    : 'api/web/task/' + task.id
+                });
             }
         },
         onGetTasksFromServer : function(tasks) {
             this.tasks = tasks;
+        },
+        updateTask : function(task) {
+            jQuery.post('api/web/task/' + task.id, task);
         }
     },
 
