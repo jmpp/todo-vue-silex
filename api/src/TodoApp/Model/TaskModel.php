@@ -14,7 +14,7 @@ class TaskModel
     {
         $database = new Database();
 
-        $sql = 'SELECT id, title, isDone FROM tasks';
+        $sql = 'SELECT id, title, isDone FROM tasks ORDER BY id ASC';
 
         $tasks = $database->query($sql);
 
